@@ -1,23 +1,32 @@
 
 import Header from "./components/Header"
-
-import Button from "./components/Button/Button"
-import { useState } from "react"
 import Teach from "./components/Teach"
 import Differences from "./components/Differences"
 import Intro from "./components/Intro"
+import Tab from "./components/Tab"
+import { useState } from "react"
+import Feedback from "./components/Feedback"
 
 
 
 function App() {
+const [tab, setTab] = useState('fb');
 
+  
   return (
     <>
         <Header/>
         <main>
         <Intro/>
-      <Teach/>
-      <Differences/>
+        <Tab active={tab} onChange={ (current) => setTab(current)  }/>
+        {tab === 'fb' && <Feedback/>}
+
+        {tab === 'main' && 
+        <>
+        <Teach/>   
+        <Differences/>
+        </>
+        }
         </main>
     </>
   )
