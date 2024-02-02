@@ -1,5 +1,5 @@
 
-import Header from "./components/Header"
+import Header from "./components/Header/Header"
 import Teach from "./components/Teach"
 import Differences from "./components/Differences"
 import Intro from "./components/Intro"

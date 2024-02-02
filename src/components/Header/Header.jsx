@@ -1,5 +1,8 @@
 import { useState } from "react";
 import logo from '/logo-name.svg';
+import './Header.css'
+
+
 
  const Header = () => {
 

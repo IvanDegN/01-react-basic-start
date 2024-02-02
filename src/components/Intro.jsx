@@ -13,7 +13,7 @@ import React from 'react'
 // export default Intro
 
 const Intro = () =>{
-    return React.createElement('section',
+    return React.createElement('section',{key: 0},
      null,[
     React.createElement('h1', {className: 'cetered', key: 1},
      'Result University'),
