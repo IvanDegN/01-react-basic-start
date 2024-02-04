@@ -5,16 +5,16 @@ const Feedback = () =>{
 
     const [inputValue, setInputValue] = useState('')
     const [selectValue, setSelectValue] = useState('')
+    const [error, setError] = useState(false)
 
     const changeValueInput = (event) =>{
         const name = event.target.value;
-       // console.log(name);
         setInputValue(name)
+        setError(name.trim().length === 0)
     }
 
     const changeValueSelect = (event) =>{
         const reason = event.target.value
-        // console.log(reason);
         setSelectValue(reason)
     }
 
@@ -24,7 +24,7 @@ const Feedback = () =>{
 
             <form action="">
                 <label htmlFor="name">Ваше имя</label>
-                <input type="text" id="name" className="control" value={inputValue} onChange={changeValueInput}/>
+                <input style={{border: error ? '1px solid red' : null }} type="text" id="name" className="control" value={inputValue} onChange={changeValueInput}/>
 
                 <label htmlFor="reason">Причина обращения</label>
                 <select name="" id="reason" className="control" value={selectValue} onChange={changeValueSelect}>
@@ -40,7 +40,7 @@ const Feedback = () =>{
                 Select: {selectValue}
             </pre>
 
-            <Button>Отправить</Button>
+            <Button disabled={error} isActive={!error}>Отправить</Button>
 
             
 
