@@ -1,8 +1,17 @@
 import { useState } from "react";
 import logo from '/logo-name.svg';
-import './Header.css'
+import {styled} from 'styled-components'
+//import './Header.css'
 
-
+ const StyleHeader = styled.header`
+height: 50px;
+display: flex;
+padding: 0 2rem;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #ccc;
+background: #fafafa;
+`
 
  const Header = () => {
 
@@ -14,13 +23,13 @@ import './Header.css'
     }, 1000);
 
     return(
-        <header>
+        <StyleHeader>
           <img src={logo} alt="logo" />
           {/* <h3>Your current city is: Saint-peterburg</h3> */}
           
           <span> time right now: {time.getHours()}:{time.getMinutes() < 10 ? '0' + time.getMinutes()  : time.getMinutes()}</span>
           
-        </header>
+        </StyleHeader>
     )
   }
 
