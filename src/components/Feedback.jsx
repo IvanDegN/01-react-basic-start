@@ -1,5 +1,34 @@
-import { useState } from 'react'
+import { Fragment, useState, useRef } from 'react'
 import Button from './Button/Button'
+
+
+const StateVsRef = () =>{
+    const input = useRef()
+    const [show, setShow] = useState(false)
+
+    // const getValue = (event) =>{
+    //     console.log(event.target.value)
+    //     setValue(event.target.value)
+    // }
+    
+    const handled = (event) =>{
+        if(event.key == "Enter"){
+            setShow(true)
+            
+        } 
+    }
+
+    return(
+        
+            <div>
+                
+                <h3>Input value: {show && input.current.value} </h3>
+                <input ref={input} type="text" onKeyDown={handled} className='control'   />
+                
+            </div>
+        
+    )
+}
 
 const Feedback = () =>{
 
@@ -48,7 +77,7 @@ const Feedback = () =>{
 
             {/* <Button onClick={toggleError}>Toggel error</Button> */}
 
-            <form action="">
+            <form action="" style={{marginBottom: '1rem'}}>
                 <label htmlFor="name">Ваше имя</label>
                 <input style={{border: form.error ? '1px solid red' : null }} type="text" id="name" className="control" value={form.inputValue} onChange={changeValueInput}/>
 
@@ -58,20 +87,21 @@ const Feedback = () =>{
                     <option value="Нужна помощь">Нужна помощь</option>
                     <option value="Предложение">Предложение</option>
                 </select>
+                <Button disabled={form.error} isActive={!form.error}>Отправить</Button>
+                
             </form>
-
+            <StateVsRef/>
+            
+            
            { /* <pre> */} 
                 {/* Name: {form.inputValue}
                 <br />
                 Select: {form.selectValue} */}
                {/* {JSON.stringify(form,null,2)} */}
            { /* </pre> */ }
-
-            <Button disabled={form.error} isActive={!form.error}>Отправить</Button>
-
-            
-
         </section>
+
+        
     )
 }
 
