@@ -6,11 +6,12 @@ import Intro from "./components/Intro"
 import Tab from "./components/Tab"
 import { useState } from "react"
 import Feedback from "./components/Feedback"
+import Effect from "./components/Effect"
 
 
 
 function App() {
-const [tab, setTab] = useState('fb');
+const [tab, setTab] = useState('effect');
 
   
   return (
@@ -20,6 +21,8 @@ const [tab, setTab] = useState('fb');
         <Intro/>
         <Tab active={tab} onChange={ (current) => setTab(current)  }/>
         {tab === 'fb' && <Feedback/>}
+
+        {tab === 'effect' && <Effect/>}
 
         {tab === 'main' && 
         <>
